@@ -1,0 +1,184 @@
+{
+  "title": "FC 27 TCG 선수 데이터",
+  "source": "EA SPORTS FC 27 공식 선수 등급 DB (ea.com/games/ea-sports-fc/ratings), 남자 축구",
+  "fetchedAt": "2026-10-25",
+  "totalPlayers": 17849,
+  "files": [
+    {
+      "file": "players_01.json",
+      "count": 1000,
+      "rankFrom": 1,
+      "rankTo": 1000,
+      "ovrFrom": 91,
+      "ovrTo": 77
+    },
+    {
+      "file": "players_02.json",
+      "count": 1000,
+      "rankFrom": 1001,
+      "rankTo": 2000,
+      "ovrFrom": 77,
+      "ovrTo": 74
+    },
+    {
+      "file": "players_03.json",
+      "count": 1000,
+      "rankFrom": 2001,
+      "rankTo": 3000,
+      "ovrFrom": 74,
+      "ovrTo": 72
+    },
+    {
+      "file": "players_04.json",
+      "count": 1000,
+      "rankFrom": 3001,
+      "rankTo": 4000,
+      "ovrFrom": 72,
+      "ovrTo": 71
+    },
+    {
+      "file": "players_05.json",
+      "count": 1000,
+      "rankFrom": 4001,
+      "rankTo": 5000,
+      "ovrFrom": 71,
+      "ovrTo": 70
+    },
+    {
+      "file": "players_06.json",
+      "count": 1000,
+      "rankFrom": 5001,
+      "rankTo": 6000,
+      "ovrFrom": 70,
+      "ovrTo": 69
+    },
+    {
+      "file": "players_07.json",
+      "count": 1000,
+      "rankFrom": 6001,
+      "rankTo": 7000,
+      "ovrFrom": 69,
+      "ovrTo": 68
+    },
+    {
+      "file": "players_08.json",
+      "count": 1000,
+      "rankFrom": 7001,
+      "rankTo": 8000,
+      "ovrFrom": 68,
+      "ovrTo": 67
+    },
+    {
+      "file": "players_09.json",
+      "count": 1000,
+      "rankFrom": 8001,
+      "rankTo": 9000,
+      "ovrFrom": 67,
+      "ovrTo": 66
+    },
+    {
+      "file": "players_10.json",
+      "count": 1000,
+      "rankFrom": 9001,
+      "rankTo": 10000,
+      "ovrFrom": 66,
+      "ovrTo": 65
+    },
+    {
+      "file": "players_11.json",
+      "count": 1000,
+      "rankFrom": 10001,
+      "rankTo": 11000,
+      "ovrFrom": 65,
+      "ovrTo": 64
+    },
+    {
+      "file": "players_12.json",
+      "count": 1000,
+      "rankFrom": 11001,
+      "rankTo": 12000,
+      "ovrFrom": 64,
+      "ovrTo": 63
+    },
+    {
+      "file": "players_13.json",
+      "count": 1000,
+      "rankFrom": 12001,
+      "rankTo": 13000,
+      "ovrFrom": 63,
+      "ovrTo": 62
+    },
+    {
+      "file": "players_14.json",
+      "count": 1000,
+      "rankFrom": 13001,
+      "rankTo": 14000,
+      "ovrFrom": 62,
+      "ovrTo": 61
+    },
+    {
+      "file": "players_15.json",
+      "count": 1000,
+      "rankFrom": 14001,
+      "rankTo": 15000,
+      "ovrFrom": 61,
+      "ovrTo": 60
+    },
+    {
+      "file": "players_16.json",
+      "count": 1000,
+      "rankFrom": 15001,
+      "rankTo": 16000,
+      "ovrFrom": 60,
+      "ovrTo": 58
+    },
+    {
+      "file": "players_17.json",
+      "count": 1000,
+      "rankFrom": 16001,
+      "rankTo": 17000,
+      "ovrFrom": 58,
+      "ovrTo": 55
+    },
+    {
+      "file": "players_18.json",
+      "count": 849,
+      "rankFrom": 17001,
+      "rankTo": 17849,
+      "ovrFrom": 55,
+      "ovrTo": 47
+    }
+  ],
+  "championCandidates": {
+    "file": "champion_candidates.json",
+    "count": 1502,
+    "cutoffOvr": 76
+  },
+  "groups": {
+    "FW": 3323,
+    "MF": 6635,
+    "GK": 1971,
+    "DF": 5920
+  },
+  "fields": {
+    "id": "EA 선수 ID (고유값)",
+    "rank": "남자 선수 OVR 순위",
+    "ovr": "종합 능력치",
+    "pos": "주 포지션 (CAM=공격형 미드필더)",
+    "group": "GK/DF/MF/FW",
+    "altPos": "보조 포지션",
+    "birth": "생년월일 YYYY-MM-DD",
+    "foot": "주발 R/L",
+    "skill": "개인기 별(1~5)",
+    "weakFoot": "약발 별(1~5)",
+    "stats": "6대 능력치",
+    "gk": "GK 전용 능력치(골키퍼만)",
+    "playStylePlus": "플레이스타일+",
+    "playStyle": "플레이스타일",
+    "championEligible": "챔피언 후보 여부 (OVR 76 이상, 상위 1500위 동점 포함)"
+  },
+  "photo": {
+    "urlPattern": "https://ratings-images-prod.pulse.ea.com/FC25/full/player-portraits/p{id}.png?padding=0.7",
+    "note": "EA 서버 사진 주소. 표본 기준 약 55%만 사진이 있음, 없으면 기본 이미지로 대체"
+  }
+}

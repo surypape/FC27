@@ -1,0 +1,151 @@
+/* FC 27 TCG 일반 선수 카드
+   폰트: Barlow Condensed(숫자·이름) + IBM Plex Sans KR(한글). 페이지에서 구글 폰트를 불러와야 합니다.
+   카드 크기는 감싸는 칸의 너비를 따라 자동으로 늘고 줄어듭니다 (비율 5:7). */
+
+.fc-card {
+  --base: #0e1a2b;      /* 포지션 그룹별로 card.js가 덮어씀 */
+  --accent: #4f8fe6;
+  --ink: #f3f1ea;
+  --muted: rgba(243, 241, 234, 0.62);
+  --line: rgba(243, 241, 234, 0.14);
+  --nat-a: #556; --nat-b: #889; --nat-c: #556;
+
+  container-type: inline-size;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 5 / 7;
+  border-radius: 5.5cqw;
+  overflow: hidden;
+  color: var(--ink);
+  background:
+    linear-gradient(160deg, color-mix(in srgb, var(--accent) 22%, var(--base)) 0%, var(--base) 55%);
+  box-shadow: 0 0 0 0.9cqw color-mix(in srgb, var(--accent) 70%, #000), 0 1.4cqw 4cqw rgba(0, 0, 0, 0.35);
+  font-family: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+  display: grid;
+  grid-template-rows: 60% auto 1fr auto;
+  user-select: none;
+}
+.fc-card::after { /* 안쪽 테두리 */
+  content: "";
+  position: absolute;
+  inset: 2.4cqw;
+  border: 0.45cqw solid var(--line);
+  border-radius: 3.6cqw;
+  pointer-events: none;
+}
+
+/* 사진 영역: 국가 색 줄무늬 + 하프라인 센터서클 */
+.fc-card__photo {
+  position: relative;
+  overflow: hidden;
+  background:
+    repeating-linear-gradient(115deg,
+      color-mix(in srgb, var(--nat-a) 38%, transparent) 0 9cqw,
+      color-mix(in srgb, var(--nat-b) 38%, transparent) 9cqw 18cqw,
+      color-mix(in srgb, var(--nat-c) 38%, transparent) 18cqw 27cqw);
+}
+.fc-card__photo::before { /* 센터서클 라인 */
+  content: "";
+  position: absolute;
+  left: 50%; top: 58%;
+  width: 78cqw; aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border: 0.5cqw solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  box-shadow: 0 0 0 30cqw transparent;
+}
+.fc-card__photo::after { /* 아래쪽을 카드 색으로 녹임 */
+  content: "";
+  position: absolute; inset: auto 0 0 0; height: 38%;
+  background: linear-gradient(to bottom, transparent, var(--base));
+}
+.fc-card__photo img {
+  position: absolute;
+  left: 50%; bottom: -2%;
+  width: 92%; height: auto;
+  max-width: none;
+  transform: translateX(-42%);
+  z-index: 1;
+  filter: drop-shadow(0 1.5cqw 2cqw rgba(0, 0, 0, 0.45));
+}
+.fc-card__photo img.is-fallback { width: 74%; transform: translateX(-38%); bottom: 0; opacity: 0.9; }
+
+.fc-card__ovr {
+  position: absolute; left: 7cqw; top: 6cqw; z-index: 2;
+  display: grid; justify-items: center; gap: 0.6cqw;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  text-shadow: 0 0.6cqw 1.6cqw rgba(0, 0, 0, 0.5);
+}
+.fc-card__ovr b { font-size: 19cqw; font-weight: 800; line-height: 0.8; letter-spacing: -0.02em; }
+.fc-card__ovr span {
+  font-size: 6.4cqw; font-weight: 700; letter-spacing: 0.08em;
+  color: var(--base); background: var(--accent);
+  padding: 0.4cqw 2.2cqw; border-radius: 1.4cqw;
+}
+.fc-card__alt {
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 4.2cqw; font-weight: 600; color: var(--muted); letter-spacing: 0.06em;
+}
+
+.fc-card__nation {
+  position: absolute; right: 7cqw; top: 7cqw; z-index: 2;
+  display: grid; justify-items: end; gap: 1.2cqw;
+}
+.fc-card__flag {
+  width: 11cqw; height: 7.5cqw; border-radius: 1cqw;
+  background: linear-gradient(to bottom, var(--nat-a) 0 33.3%, var(--nat-b) 33.3% 66.6%, var(--nat-c) 66.6%);
+  box-shadow: 0 0 0 0.4cqw rgba(255, 255, 255, 0.35);
+}
+.fc-card__nation small { font-size: 4.4cqw; font-weight: 600; text-shadow: 0 0.4cqw 1cqw rgba(0, 0, 0, 0.6); }
+
+/* 이름 */
+.fc-card__name {
+  position: relative; z-index: 2;
+  margin-top: -6cqw;
+  padding: 0 7cqw;
+  text-align: center;
+}
+.fc-card__name h3 {
+  margin: 0;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  font-size: 10.5cqw; font-weight: 800; line-height: 1;
+  text-transform: uppercase; letter-spacing: 0.01em;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.fc-card__name p {
+  margin: 1.2cqw 0 0;
+  font-size: 4.2cqw; color: var(--muted);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+
+/* 능력치 3x2 */
+.fc-card__stats {
+  list-style: none; margin: 0;
+  padding: 2.6cqw 8cqw 0;
+  display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2.2cqw 4cqw;
+  align-content: start;
+}
+.fc-card__stats li { display: grid; gap: 0.8cqw; }
+.fc-card__stats .v {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1cqw;
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+}
+.fc-card__stats .v b { font-size: 7.6cqw; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+.fc-card__stats .v span { font-size: 3.7cqw; color: var(--muted); font-family: "IBM Plex Sans KR", sans-serif; white-space: nowrap; }
+.fc-card__stats i { display: block; height: 0.8cqw; border-radius: 1cqw; background: var(--line); overflow: hidden; }
+.fc-card__stats i::before { content: ""; display: block; height: 100%; width: var(--w); background: var(--accent); }
+
+/* 아래쪽 */
+.fc-card__foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 2cqw;
+  padding: 0 8cqw 6.4cqw;
+  font-size: 3.7cqw; color: var(--muted);
+}
+.fc-card__foot .ps {
+  color: var(--ink);
+  border: 0.4cqw solid color-mix(in srgb, var(--accent) 60%, transparent);
+  border-radius: 10cqw; padding: 0.4cqw 2.4cqw;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0;
+}
+.fc-card__foot .no { font-family: "Barlow Condensed", "Arial Narrow", sans-serif; font-size: 4.2cqw; letter-spacing: 0.06em; white-space: nowrap; font-variant-numeric: tabular-nums; }

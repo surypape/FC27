@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FC 27 카드 미리보기</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Sans+KR:wght@400;600&display=swap">
+<link rel="stylesheet" href="card.css">
+<style>
+  body { margin: 0; background: #101612; color: #eef1ee; font-family: "IBM Plex Sans KR", sans-serif; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px 16px 48px; }
+  h1 { font-family: "Barlow Condensed", sans-serif; font-size: 34px; margin: 0 0 12px; }
+  .bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+  input { flex: 1 1 220px; font: inherit; padding: 10px 12px; border-radius: 8px; border: 1px solid #3a463e; background: #18211b; color: inherit; }
+  #count { align-self: center; color: #9aa69e; font-size: 13px; }
+  #grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>FC 27 카드 미리보기</h1>
+  <div class="bar">
+    <input id="q" placeholder="선수, 팀, 국적으로 검색 (예: Messi, 대한민국, Arsenal)">
+    <span id="count">불러오는 중…</span>
+  </div>
+  <div id="grid"></div>
+</main>
+<script type="module">
+  import { loadAllPlayers } from './loadPlayers.js';
+  import { renderCard } from './card.js';
+
+  const players = await loadAllPlayers();
+  const grid = document.getElementById('grid');
+  const count = document.getElementById('count');
+  const SHOW = 60;
+
+  function show(list) {
+    grid.replaceChildren(...list.slice(0, SHOW).map(p => renderCard(p, { total: players.length })));
+    count.textContent = `${list.length.toLocaleString()}명 중 ${Math.min(SHOW, list.length)}명 표시`;
+  }
+  document.getElementById('q').addEventListener('input', e => {
+    const q = e.target.value.trim().toLowerCase();
+    show(q ? players.filter(p => (p.name + p.team + p.nation).toLowerCase().includes(q)) : players);
+  });
+  show(players);
+</script>
+</body>
+</html>
